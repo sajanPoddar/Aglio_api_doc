@@ -1,0 +1,64 @@
+FORMAT: 1A
+
+# Example API
+This is an example showing error information like Stripe does.
+
+## Errors
+Errors returned by this API take the following format:
+
+```json
+{
+  "type": "api_error",
+  "message": "Server is temporarily unavailable"
+}
+```
+
+##### Attributes
+
+<dl>
+  <dt>type</dt>
+  <dd>
+    <code>string</code>
+    <p>The type of error returned. Can be: <code>api_connection_error</code>, <code>api_error</code>, <code>authentication_error</code>, <code>card_error</code>, <code>invalid_request_error</code>, or <code>rate_limit_error</code>.</p>
+  </dd>
+  <dt>message</dt>
+  <dd>
+    <code>string</code> <span class="text-muted">optional</span>
+    <p>A human-readable message providing more details about the error. For card errors, these messages can be shown to your users.</p>
+  </dd>
+  <dt>code</dt>
+  <dd>
+    <code>string</code> <span class="text-muted">optional</span>
+    <p>For card errors, a short string from amongst those listed on the right describing the kind of card error that occurred.</p>
+  </dd>
+  <dt>param</dt>
+  <dd>
+    <code>string</code> <span class="text-muted">optional</span>
+    <p>The parameter the error relates to if the error is parameter-specific. You can use this to display a message near the correct form field, for example.</p>
+  </dd>
+</dl>
+
+## Frob [/frobs/{id}]
+A frob that does something.
+
++ Parameters
+
+    + id (number)
+
+### Get a frob [GET]
+Get a frob from the database.
+
++ Response 200 (application/json)
+
+        {
+          "id": 1
+          "name": "Frob 1"
+        }
+
++ Response 404 (application/json)
+
+        {
+          "type": "invalid_request_error",
+          "message": "ID 3 not found",
+          "param": "id"
+}

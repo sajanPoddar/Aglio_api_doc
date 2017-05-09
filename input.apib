@@ -1,0 +1,248 @@
+FORMAT: 1A
+HOST: http://blog.acme.com
+
+# Basic ACME Blog API
+Welcome to the **ACME Blog** API. This API provides access to the **ACME
+Blog** service.
+
+# Group Blog Posts
+
+## Resource 1 [/resource1]
+
+ ...
+
+# Group Authors
+Resources in this groups are related to **ACME Blog** authors.
+
+## Resource 2 [/resource2]
+
+ ...
+
+ # Blog Posts [/posts/{id}]
+Resource representing **ACME Blog** posts.
+
+# /posts/{id}
+
+# GET /posts/{id}
+
+# My Resource [/resource]
+
++ Model (text/plain)
+
+        Hello World
+
+## Retrieve My Resource [GET]
+
++ Response 200
+
+    [My Resource][]
+
+    ## Retrieve a Message [GET]
+
++ Response 200 (application/json)
+    + Body
+
+            {"message": "Hello world!"}
+
+    + Schema
+
+            {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+
+            # Blog Posts [/posts{?limit}]
+ ...
+
+## Retrieve Blog Posts [GET]
+Retrieves the list of **ACME Blog** posts.
+
++ Parameters
+    + limit (optional, number) ... Maximum number of posts to retrieve
+
++ Response 200
+
+        ...
+
+## Create a Post [POST]
+
++ Attributes
+
+        ...
+
++ Request
+
+        ...
+
++ Response 201
+
+        ...
+
+## Delete a Post [DELETE /posts/{id}]
+
++ Parameters
+    + id (string) ... Id of the post
+
++ Response 204
+
+# Resource [/resource]
+## Create Resource [POST]
+
++ request A
+
+        ...
+
++ response 200
+
+        ...
+
++ request B
+
+        ...
+
++ response 200
+
+        ...
+
++ response 500
+
+        ...
+
++ request C
+
+        ...
+
++ request D
+
+        ...
+
++ response 200
+
+        ...
+
++ Request Create Blog Post (application/json)
+
+        { "message" : "Hello World." }
+
++ Response 201 (application/json)
+
+            { "message" : "created" }
+
+# GET /posts/{id}
+
++ Parameters
+    + id - Id of a post.
+
++ Parameters
+    + id (number) - Id of a post.
+
++ Parameters
+    + id: `1001` (number, required) - Id of a post.
+
++ Parameters
+    + id: `1001` (number, optional) - Id of a post.
+        + Default: `20`
+
++ Parameters
+    + id (enum[string])
+
+        Id of a Post
+
+        + Members
+            + `A`
+            + `B`
+            + `C`
+
++ Attributes (object)
+
+# Blog Post [/posts/{id}]
+Resource representing **ACME Blog** posts.
+
++ Attributes
+    + id (number)
+    + message (string) - The blog post article
+    + author: john@appleseed.com (string) - Author of the blog post
+    ## Create a Post [POST]
+
++ Attributes
+    + message (string) - The blog posta article
+    + author: john@appleseed.com (string) - Author of the blog post
+
++ Request (application/json)
+
++ Request (application/yaml)
+
++ Response 201
+## Retrieve a Post [GET]
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + message (string) - Message to the world
+
+    + Body
+
+            { "message" : "Hello World." }
+            + Headers
+
+        Accept-Charset: utf-8
+        Connection: keep-alive
+        Content-Type: multipart/form-data, boundary=AaB03x
+        + Body
+
+        {
+            "message": "Hello"
+        }
+
+
+# Data Structures
+
+## Message (object)
+
++ text (string) - text of the message
++ author (Author) - author of the message
+
+## Author (object)
+
++ name: John
++ email: john@appleseed.com
+# User [/user]
+
+
+
+# Data Structures
+
+## Author (object)
+
++ name: John
++ email: john@appleseed.com
+# User [/user]
+
++ Attributes
+    + name: John
+    + email: john@appleseed.com
+
+# Data Structures
+
+## Author (User)
+# Task [/tasks/{id}]
+
++ Parameters
+    + id
+
+## Retrieve Task [GET]
+
++ Relation: task
++ Response 200
+
+        { ... }
+
+## Delete Task [DELETE]
+
++ Relation: delete
++ Response 204
